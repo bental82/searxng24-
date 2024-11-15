@@ -8,9 +8,9 @@ services:
     healthCheckPath: /
     envVars:
       - key: SEARXNG_BASE_URL
-        value: https://your-app-name.onrender.com/
+        value: https://searxng24.onrender.com
       - key: SEARXNG_HOSTNAME
-        value: your-app-name.onrender.com
+        value: searxng24.onrender.com
     disk:
       name: searxng-data
       mountPath: /etc/searxng

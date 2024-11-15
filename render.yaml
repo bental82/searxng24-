@@ -8,9 +8,14 @@ services:
     healthCheckPath: /
     envVars:
       - key: SEARXNG_BASE_URL
-        value: https://searxng24.onrender.com
+        value: https://your-app-name.onrender.com/
       - key: SEARXNG_HOSTNAME
-        value: searxng24.onrender.com
+        value: your-app-name.onrender.com
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: valkey-redis
+          property: connectionString
     disk:
       name: searxng-data
       mountPath: /etc/searxng

@@ -11,10 +11,9 @@ RUN echo '#!/bin/sh' > /entrypoint.sh && \
     echo 'sed -i "s|\${REDIS_URL}|$REDIS_URL|g" /etc/searx/settings.yml' >> /entrypoint.sh && \
     echo 'sed -i "s|xxxxx|$SEARXNG_SECRET_KEY|g" /etc/searx/settings.yml' >> /entrypoint.sh && \
     echo 'exec "$@"' >> /entrypoint.sh && \
-    chmod +x /entrypoint.sh && \
-    cat /entrypoint.sh  # This will show the content in build logs for verification
+    chmod +x /entrypoint.sh
 
 EXPOSE 8080
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/usr/local/searxng/searx-run"]
+CMD ["python", "-m", "searx.webapp"]

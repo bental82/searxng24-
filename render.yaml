@@ -1,0 +1,23 @@
+# render.yaml
+services:
+  - type: web
+    name: searxng
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: SEARXNG_BASE_URL
+        value: https://your-app-name.onrender.com/
+      - key: SEARXNG_HOSTNAME
+        value: your-app-name.onrender.com
+    disk:
+      name: searxng-data
+      mountPath: /etc/searxng
+      sizeGB: 1
+  
+  - type: redis
+    name: valkey-redis
+    ipAllowList: []
+    plan: starter
+    maxmemoryPolicy: noeviction

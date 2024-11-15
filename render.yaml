@@ -19,7 +19,7 @@ services:
         generateValue: true # This will generate a random secret key
     disk:
       name: searxng-data
-      mountPath: /etc/searxng
+      mountPath: /etc/searx
       sizeGB: 1
   
   - type: redis

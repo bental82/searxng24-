@@ -1,4 +1,3 @@
-# render.yaml
 services:
   - type: web
     name: searxng
@@ -8,14 +7,16 @@ services:
     healthCheckPath: /
     envVars:
       - key: SEARXNG_BASE_URL
-        value: https://your-app-name.onrender.com/
+        value: https://searxng24.onrender.com
       - key: SEARXNG_HOSTNAME
-        value: your-app-name.onrender.com
+        value: searxng24.onrender.com
       - key: REDIS_URL
         fromService:
           type: redis
           name: valkey-redis
           property: connectionString
+      - key: SEARXNG_SECRET_KEY
+        generateValue: true # This will generate a random secret key
     disk:
       name: searxng-data
       mountPath: /etc/searxng
